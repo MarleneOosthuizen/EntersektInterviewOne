@@ -1,0 +1,49 @@
+This is the guidelines I used to setup everything and to run tests:
+
+1) Base folder
+
+On your system create a folder called dev on the root, e.g. C:\dev
+2) Install Node.js
+
+Under C:\dev create a new folder called nodejs.
+Go to http://nodejs.org/ and install nodejs in the new folder, ensure you include the npm tool in your installation. npm tool installed with nodejs is very old, and needs to be updated. In a command window type "npm install npm -g", -g flag is for global
+3) Install nightwatch.js
+
+Under C:\dev create a new folder called nightwatch.
+Got to Start > Run > and type 'cmd' to get a console window.
+Type npm install nightwatch and note the location and structure of the install.
+4) Get Selenium Server
+
+Download "selenium-server-standalone-{latest version}.jar" from; http://selenium-release.storage.googleapis.com/index.html
+Place the file in the nightwatch/lib folder created as part of the nightwatch.js installation.
+Rename the file to sel-serv.jar for ease of reference.
+5) File to call the runner
+
+On your system navigate to C:\Dev\nightwatch\node_modules\nightwatch
+Create a new file called nightwatch.js
+Add the following line and save the file; require('nightwatch/bin/runner.js');
+Basic set-up is now complete!
+
+6) Start Selenium
+
+Open a console window (or reuse the one from step 3) and navigate to: C:\Dev\nightwatch\node_modules\nightwatch\lib
+Now type java -jar sel-serv.jar to start Selenium Server.
+Open Firefox and navigate to http://localhost:4444/ to check the server is up (ignore the 403 error).
+7) Run some tests!
+
+Open a new console window.
+Navigate to C:\Dev\nightwatch\node_modules\nightwatch\
+
+Run single test by typing node nightwatch.js -t examples/tests/nightwatch.js
+NB!!!! Modify path to where your test resides and use the name of your test instead of nightwatch.js (In this case use EntersektAssertionOne.js)
+
+
+
+
+You are now ready to start modifying the installation and adding your own test libraries.
+
+Next steps
+
+Modify your configuration - see how on the website
+Set-up your own test libraries and groups - see the main website
+Install webdrivers - see the Wiki for details
